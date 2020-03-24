@@ -42,12 +42,12 @@ describe('wishlist Endpoints', function() {
         });
     });
 
-    // it('responds with a 200 and the wishlist', () => {
-    //   return supertest(app)
-    //     .get('/api/wishlist')
-    //     .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-    //     .expect(200, testWishlist);
-    // }); 
+    it('responds with a 200 and the wishlist', () => {
+      return supertest(app)
+        .get('/api/wishlist')
+        .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
+        .expect(200, testWishlist);
+    }); 
 
   });
 
@@ -85,62 +85,62 @@ describe('wishlist Endpoints', function() {
         .expect(401, {error: 'Unauthorized request'});
     })
 
-    // it('creates a new wish, responding with a 201 and returning the wish', () => {
-    //   const newWish = {
-    //     user_id: 1,
-    //     plant_id: 1,
-    //   };
-    //   return supertest(app)
-    //     .post('/api/wishlist')
-    //     .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-    //     .send(newWish)
-    //     .expect(201)
-    //     .expect(res => {
-    //       expect(res.body).to.have.property('id');
-    //       expect(res.user_id).to.eql(newWish.user_id);
-    //       expect(res.plant_id).to.eql(newWish.plant_id);
-    //     });
-    // });
+    it('creates a new wish, responding with a 201 and returning the wish', () => {
+      const newWish = {
+        user_id: 1,
+        plant_id: 1,
+      };
+      return supertest(app)
+        .post('/api/wishlist')
+        .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
+        .send(newWish)
+        .expect(201)
+        .expect(res => {
+          expect(res.body).to.have.property('id');
+          expect(res.user_id).to.eql(newWish.user_id);
+          expect(res.plant_id).to.eql(newWish.plant_id);
+        });
+    });
 
   });
 
-  // describe('DELETE /api/wishlist', () => {
-  //   const testUsers = helpers.makeUsersArray();
-  //   const testPlants = helpers.makePlantsArray();
-  //   const testWishlist = helpers.makeWishlistArray(testUsers, testPlants);
+  describe('DELETE /api/wishlist', () => {
+    const testUsers = helpers.makeUsersArray();
+    const testPlants = helpers.makePlantsArray();
+    const testWishlist = helpers.makeWishlistArray(testUsers, testPlants);
 
-  //   beforeEach('insert plants, users, wishlist', () => {
-  //     return db 
-  //       .into('plants_base')
-  //       .insert(testPlants)
-  //       .then(() => {
-  //         return db
-  //           .into('plants_users')
-  //           .insert(testUsers);
-  //       })
-  //       .then(() => {
-  //         return db
-  //           .into('plants_wishes')
-  //           .insert(testWishlist);
-  //       });
-  //   });
+    beforeEach('insert plants, users, wishlist', () => {
+      return db 
+        .into('plants_base')
+        .insert(testPlants)
+        .then(() => {
+          return db
+            .into('plants_users')
+            .insert(testUsers);
+        })
+        .then(() => {
+          return db
+            .into('plants_wishes')
+            .insert(testWishlist);
+        });
+    });
 
-  //   it('responds with a 204 and removes the wish', () => {
-  //     const idToRemove = 1;
-  //     const expectedWishlist = testWishlist.filter(wish => wish.id !== idToRemove);
+    it('responds with a 204 and removes the wish', () => {
+      const idToRemove = 1;
+      const expectedWishlist = testWishlist.filter(wish => wish.id !== idToRemove);
 
-  //     return supertest(app)
-  //       .delete('/api/wishlist')
-  //       .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-  //       .send(`${idToRemove}`)
-  //       .expect(204)
-  //       .then(res => 
-  //         supertest(app)
-  //           .get('/api/wishlist')
-  //           .expect(expectedWishlist)
-  //       );
-  //   });
+      return supertest(app)
+        .delete('/api/wishlist')
+        .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
+        .send(`${idToRemove}`)
+        .expect(204)
+        .then(res => 
+          supertest(app)
+            .get('/api/wishlist')
+            .expect(expectedWishlist)
+        );
+    });
 
-  // });
+  });
 
 });

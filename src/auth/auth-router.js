@@ -31,7 +31,7 @@ authRouter
       if (!isMatch) {
         return res.status(401).json({ error: 'Invalid credentials' })
       }
-
+      console.log(user);
       const sub = user.user_name
       const payload = { user_id: user.id }
       const token = await AuthService.createJwt(sub, payload);
