@@ -9,13 +9,6 @@ const ResultsService = {
       .where(query);
   },
 
-  //posting to wishlist
-  // insertWishlistPlant(db, newPlant) {
-  //   return db
-  //     .insert(newPlant)
-  //     .into('plants_wishes');
-  // },
-
 };
 
 module.exports = ResultsService;

@@ -7,13 +7,6 @@ const QuizService = {
       .from('plants_questions');
   },
 
-  // getAllAnswers(db) {
-  //   return db
-  //     .select('*')
-  //     .from('plants_answers');
-  // },
-
-
   getById(db, id) {
     return db
       .select('*')

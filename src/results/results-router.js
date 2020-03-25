@@ -34,18 +34,5 @@ resultsRouter
       })
       .catch(next);  
   });
-//posting to wishlist
-// .post(requireAuth, jsonBodyParser, (req, res, next) => {
-//   const { user_id, plant_id } = req.body;
-//   const newWish = { user_id, plant_id };
-
-//   ResultsService.insertWishlistPlant(req.app.get('db'), newWish)
-//     .then(wish => {
-//       res
-//         .status(201)
-//         .json(wish.map(serializeWish));
-//     })
-//     .catch(next);
-// });
 
 module.exports = resultsRouter;
