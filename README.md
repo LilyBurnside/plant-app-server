@@ -14,7 +14,14 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `[{question objects}]`
+    **Content example:** `[{
+        "id": 1,
+        "question": "What light will you have for your plant?",
+        "answer_1": "A bright spot",
+        "answer_2": "A shadier spot",
+        "answer_3": "I can barely read a book",
+        "answer_4": "Artifical lighting only"
+    }]`
 
 ------------------------------------------------------------------------------
 * **Method:**
@@ -34,7 +41,17 @@
   <_What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!_>
 
   * **Code:** 200 <br />
-    **Content:** `[{plants as objects that match query}]`
+    **Content example:** `[{
+        "id": 1,
+        "cmn_name": "Pothos",
+        "sci_name": "Epipremnum aureum",
+        "photo": "https://plant-app-images.s3.us-east-2.amazonaws.com/epipremnum-aureum.jpg",
+        "light": "medium",
+        "pet_safe": "no",
+        "water": "low",
+        "size": "tabletop",
+        "care_level": "beginner"
+    }]`
  
 ------------------------------------------------------------------------------
 * **Method:**
@@ -46,7 +63,17 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `[{plants as objects that are on the wishlist table}]`
+    **Content example:** `[{
+        "id": 5,
+        "cmn_name": "Swiss cheese vine",
+        "sci_name": "Monstera adasonii",
+        "photo": "https://plant-app-images.s3.us-east-2.amazonaws.com/monstera-adasonii.jpg",
+        "light": "medium",
+        "pet_safe": "no",
+        "water": "medium",
+        "size": "small",
+        "care_level": "intermediate"
+    }]`
 
 * **Error Response:**
 
